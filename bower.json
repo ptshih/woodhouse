@@ -1,0 +1,21 @@
+{
+  "name": "woodhouse",
+  "version": "0.2.14",
+  "main": "woodhouse.js",
+  "ignore": [
+    "woodhouse-min.js",
+    "docs",
+    "examples",
+    "test",
+    "*.yml",
+    "*.map",
+    ".html",
+    "*.ico"
+  ],
+  "dependencies": {
+    "backbone": ">=1.1.2",
+    "underscore": ">=1.6.0",
+    "jquery": ">=1.11.0"
+  },
+  "homepage": "https://github.com/ptshih/woodhouse.git"
+}
