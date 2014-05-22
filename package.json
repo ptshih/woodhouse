@@ -1,0 +1,29 @@
+{
+  "name": "woodhouse",
+  "version": "0.2.14",
+  "description": "Woodhouse, fetch me a rug!",
+  "main": "woodhouse.js",
+  "scripts": {
+    "test": "mocha -R spec test"
+  },
+  "homepage": "https://github.com/ptshih/woodhouse",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ptshih/woodhouse.git"
+  },
+  "keywords": [
+    "woodhouse",
+    "backbone"
+  ],
+  "dependencies": {
+    "backbone": ">=1.1.2",
+    "underscore": ">=1.6.0",
+    "jquery": ">=1.11.0"
+  },
+  "author": {
+    "name": "Peter Shih",
+    "web": "https://github.com/ptshih"
+  },
+  "license": "MIT",
+  "readmeFilename": "README.md"
+}
