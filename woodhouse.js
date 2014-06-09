@@ -1238,7 +1238,7 @@
 
             // If all we need is the index
             if (keypath === '$index') {
-              var index = options.index + parseInt($bindEl.attr('bind-index-offset'), 10) || 0;
+              var index = options.index + (parseInt($bindEl.attr('bind-index-offset'), 10) || 0);
               var transformersFn = this.transformers && this.transformers.index;
               if (transformersFn && _.isFunction(transformersFn[keypathWithPrefix])) {
                 index = transformersFn[keypathWithPrefix].call(this, index);
@@ -1705,7 +1705,7 @@
 
           // If all we need is the index
           if (keypath === '$index') {
-            var index = options.index + parseInt($bindEl.attr('bind-index-offset'), 10) || 0;
+            var index = options.index + (parseInt($bindEl.attr('bind-index-offset'), 10) || 0);
             var transformersFn = this.transformers && this.transformers.index;
             if (transformersFn && _.isFunction(transformersFn[keypathWithPrefix])) {
               index = transformersFn[keypathWithPrefix].call(this, index);
