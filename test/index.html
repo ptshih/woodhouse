@@ -3,22 +3,18 @@
 <head>
   <meta charset="utf-8">
   <title>Woodhouse Tests</title>
-  <link rel="stylesheet" href="vendor/qunit-1.14.0.css">
+  <link rel="stylesheet" href="vendor/qunit/qunit/qunit.css">
+
+  <script src="vendor/qunit/qunit/qunit.js"></script>
+  <script src="vendor/underscore/underscore.js"></script>
+  <script src="vendor/jquery/dist/jquery.js"></script>
+  <script src="vendor/backbone/backbone.js"></script>
+  <script src="../woodhouse.js"></script>
 </head>
 <body>
-  <script src="vendor/qunit-1.14.0.js"></script>
-  <script src="vendor/underscore.js"></script>
-  <script src="vendor/backbone.js"></script>
-  <script src="vendor/jquery.js"></script>
-  <script src="../woodhouse.js"></script>
-  <script src="models.js"></script>
-  <script src="relations.js"></script>
-  <script src="events.js"></script>
-  <script src="misc.js"></script>
-  <script src="bindings.js"></script>
   <div id="qunit"></div>
-  <div id="qunit-fixture">
 
+  <div id="qunit-fixture">
     <!-- Input -->
     <input id="input" bind-val="text">
     <textarea id="textarea" bind-val="html"></textarea>
@@ -57,7 +53,6 @@
     <!-- Attr -->
     <div id="attr" bind-attr-data-attr="attr"></div>
 
-
     <!-- Each -->
     <div id="each" bind-each="each">
       <div class="each-item" bind-text="id" bind-attr-data-id="id"></div>
@@ -68,5 +63,12 @@
     </select>
 
   </div>
+
+  <!-- Tests -->
+  <script src="models.js"></script>
+  <script src="relations.js"></script>
+  <script src="events.js"></script>
+  <script src="misc.js"></script>
+  <script src="bindings.js"></script>
 </body>
 </html>

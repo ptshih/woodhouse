@@ -25,5 +25,9 @@
     "web": "https://github.com/ptshih"
   },
   "license": "MIT",
-  "readmeFilename": "README.md"
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "karma": "^0.12.16",
+    "karma-qunit": "^0.1.3"
+  }
 }
