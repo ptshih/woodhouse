@@ -4,7 +4,8 @@
   "description": "Woodhouse, fetch me a rug!",
   "main": "woodhouse.js",
   "scripts": {
-    "test": "karma start"
+    "test": "karma start --single-run",
+    "watch-test": "karma start"
   },
   "homepage": "https://github.com/ptshih/woodhouse",
   "repository": {
@@ -15,11 +16,6 @@
     "woodhouse",
     "backbone"
   ],
-  "dependencies": {
-    "backbone": ">=1.1.2",
-    "underscore": ">=1.6.0",
-    "jquery": ">=1.11.0"
-  },
   "author": {
     "name": "Peter Shih",
     "web": "https://github.com/ptshih"
