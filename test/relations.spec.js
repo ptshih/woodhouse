@@ -50,13 +50,13 @@ module('Models with relations', {
 });
 
 test('get attribute value', function() {
-  deepEqual(this.model.get('name'), 'parent');
+  equal(this.model.get('name'), 'parent');
   deepEqual(this.model.get('servant').attributes, {});
-  deepEqual(this.model.get('child.name'), 'child');
+  equal(this.model.get('child.name'), 'child');
   deepEqual(this.model.get('child.grandchild').attributes, {
     name: 'grandchild'
   });
-  deepEqual(this.model.get('child.grandchild.name'), 'grandchild');
+  equal(this.model.get('child.grandchild.name'), 'grandchild');
   deepEqual(this.model.get('child.grandchildren').toJSON(), [{
     name: 'grandson',
     age: 5
@@ -69,8 +69,8 @@ test('get attribute value', function() {
     name: 'grandson',
     age: 5
   });
-  deepEqual(this.model.get('child.grandchildren.0.name'), 'grandson');
-  deepEqual(this.model.get('child.grandchildren.0.age'), 5);
+  equal(this.model.get('child.grandchildren.0.name'), 'grandson');
+  equal(this.model.get('child.grandchildren.0.age'), 5);
 
 });
 

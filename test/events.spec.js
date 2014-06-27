@@ -8,6 +8,8 @@ module('Events', {
 });
 
 test("events trigger set with dot notation", function() {
+  expect(1);
+
   var model = new Woodhouse.Model({
     shipping_address: {
       city: 'Los Santos',
@@ -16,13 +18,15 @@ test("events trigger set with dot notation", function() {
   });
 
   model.on('change:shipping_address.state', function() {
-    deepEqual(model.get('shipping_address.state'), 'NY');
+    equal(model.get('shipping_address.state'), 'NY');
   }.bind(this));
 
   model.set('shipping_address.state', 'NY');
 });
 
 test("events trigger set with nested object", function() {
+  expect(2);
+
   var model = new Woodhouse.Model({
     shipping_address: {
       city: 'Los Santos',
@@ -31,8 +35,8 @@ test("events trigger set with nested object", function() {
   });
 
   model.on('change:shipping_address.state', function() {
-    deepEqual(model.get('shipping_address.state'), 'NJ');
-    deepEqual(model.get('shipping_address.zone.hot'), 'yes');
+    equal(model.get('shipping_address.state'), 'NJ');
+    equal(model.get('shipping_address.zone.hot'), 'yes');
   }.bind(this));
 
   model.set('shipping_address', {
@@ -44,6 +48,8 @@ test("events trigger set with nested object", function() {
 });
 
 test("events trigger set array", function() {
+  expect(1);
+
   var model = new Woodhouse.Model({
     siblings: ['bob', 'linda']
   });

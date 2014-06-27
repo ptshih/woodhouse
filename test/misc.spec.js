@@ -19,7 +19,7 @@ test('setting a child model as an attribute of a parent model', function() {
 
   var a = new A();
 
-  deepEqual(a.get('message'), '');
+  equal(a.get('message'), '');
 
   a.set({
     message: 'welcome to the danger zone'
@@ -28,8 +28,8 @@ test('setting a child model as an attribute of a parent model', function() {
   ok(!_.isFunction(a.get('troll')), 'auto eval on get');
   ok(_.isFunction(a.attributes.troll), 'raw computed property function');
 
-  deepEqual(a.get('message'), 'welcome to the danger zone');
-  deepEqual(a.get('troll'), 'WELCOME TO THE DANGER ZONE');
+  equal(a.get('message'), 'welcome to the danger zone');
+  equal(a.get('troll'), 'WELCOME TO THE DANGER ZONE');
 });
 
 
@@ -167,7 +167,7 @@ test('setting 2 levels of nested models as an attribute of a parent model', func
   });
 
   ok(a.get('directory.agents') instanceof Woodhouse.Collection);
-  deepEqual(a.get('directory.agents.length'), 1);
+  equal(a.get('directory.agents.length'), 1);
 
 });
 

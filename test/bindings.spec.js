@@ -97,12 +97,12 @@ module('Bindings', {
 
 
 test('default binding values', function() {
-  deepEqual(this.$text.text(), 'Sterling Archer');
-  deepEqual(this.$html.html(), '&lt;strong&gt;ISIS&lt;/strong&gt;');
-  deepEqual(this.$uppercase.text(), 'STERLING ARCHER');
+  equal(this.$text.text(), 'Sterling Archer');
+  equal(this.$html.html(), '&lt;strong&gt;ISIS&lt;/strong&gt;');
+  equal(this.$uppercase.text(), 'STERLING ARCHER');
 
-  deepEqual(this.$input.val(), 'Sterling Archer');
-  deepEqual(this.$textarea.val(), '<strong>ISIS</strong>');
+  equal(this.$input.val(), 'Sterling Archer');
+  equal(this.$textarea.val(), '<strong>ISIS</strong>');
 
   ok(this.$visible.is(':visible'));
   ok(this.$hidden.is(':hidden'));
@@ -116,11 +116,11 @@ test('bind-text', function() {
   expect(3);
 
   // default
-  deepEqual(this.$text.text(), 'Sterling Archer');
+  equal(this.$text.text(), 'Sterling Archer');
 
   // model-to-view
   this.model.set('text', 'Malory Archer');
-  deepEqual(this.$text.text(), 'Malory Archer');
+  equal(this.$text.text(), 'Malory Archer');
 
   // view-to-model
   this.$input.val('Woodhouse');
@@ -133,23 +133,23 @@ test('bind-html', function() {
   expect(3);
 
   // default
-  deepEqual(this.$html.html(), '&lt;strong&gt;ISIS&lt;/strong&gt;');
+  equal(this.$html.html(), '&lt;strong&gt;ISIS&lt;/strong&gt;');
 
   // model-to-view
   this.model.set('html', '<strong>ODIN</strong>');
-  deepEqual(this.$html.html(), '&lt;strong&gt;ODIN&lt;/strong&gt;');
+  equal(this.$html.html(), '&lt;strong&gt;ODIN&lt;/strong&gt;');
 
   // view-to-model
-  this.$textarea.val('<strong>ODIN</strong>');
+  this.$textarea.val('<strong>ISIS</strong>');
   this.$textarea.trigger('input');
-  deepEqual(this.$html.html(), '&lt;strong&gt;ODIN&lt;/strong&gt;');
+  equal(this.$html.html(), '&lt;strong&gt;ISIS&lt;/strong&gt;');
 });
 
 
 test('bind-text with computed function', function() {
   expect(1);
 
-  deepEqual(this.$uppercase.text(), 'STERLING ARCHER');
+  equal(this.$uppercase.text(), 'STERLING ARCHER');
 });
 
 

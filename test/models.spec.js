@@ -36,11 +36,11 @@ test('get attribute value', function() {
     }]
   });
 
-  deepEqual(model.get('name'), 'parent');
-  deepEqual(model.get('child.name'), 'child');
+  equal(model.get('name'), 'parent');
+  equal(model.get('child.name'), 'child');
   deepEqual(model.get('child.siblings'), ['tina', 'gene', 'louise']);
-  deepEqual(model.get('child.grandchild.name'), 'grandchild');
-  deepEqual(model.get('child.grandchild.greatgrandchild.name'), 'greatgrandchild');
+  equal(model.get('child.grandchild.name'), 'grandchild');
+  equal(model.get('child.grandchild.greatgrandchild.name'), 'greatgrandchild');
 
   deepEqual(model.get('siblings'), [{
     name: 'john',
@@ -49,8 +49,8 @@ test('get attribute value', function() {
     name: 'joe',
     tags: ['omg', 'wtf']
   }]);
-  deepEqual(model.get('siblings.0.name'), 'john');
-  deepEqual(model.get('siblings.1.name'), 'joe');
+  equal(model.get('siblings.0.name'), 'john');
+  equal(model.get('siblings.1.name'), 'joe');
   deepEqual(model.get('siblings.0.tags'), ['cool', 'sweet']);
 
 
@@ -77,11 +77,11 @@ test('set attribute value (objects)', function() {
 
   // set an attribute
   model.set('name', 'malory');
-  deepEqual(model.get('name'), 'malory');
+  equal(model.get('name'), 'malory');
 
   // set an attribute that doesn't exist
   model.set('gender', 'female');
-  deepEqual(model.get('gender'), 'female');
+  equal(model.get('gender'), 'female');
 
   // set an attribute that already exists (overwrite)
   model.set('child', {
@@ -99,7 +99,7 @@ test('set attribute value (objects)', function() {
 
   // set an attribute of a nested object that exists
   model.set('child.grandchild.age', 1);
-  deepEqual(model.get('child.grandchild.age'), 1);
+  equal(model.get('child.grandchild.age'), 1);
   deepEqual(model.get('child.grandchild'), {
     name: 'seamus',
     age: 1
