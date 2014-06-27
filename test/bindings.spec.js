@@ -2,7 +2,54 @@
 
 module('Bindings', {
   setup: function() {
-    Backbone.$ = $;
+    // Elements
+    // TODO (kelly) break these tests up into logical chunks
+    var $fixture = $('#qunit-fixture');
+    this.$input = $('<input id="input" bind-val="text" />');
+    this.$textarea = $('<textarea id="textarea" bind-val="html"></textarea>');
+    this.$contenteditable = $('<div id="contenteditable" contenteditable="true" bind-text="text"></div>');
+    this.$text = $('<div id="text" bind-text="text"></div>');
+    this.$html = $('<div id="html" bind-text="html"></div>');
+    this.$uppercase = $('<div id="uppercase" bind-text="uppercase"></div>');
+
+    this.$visible = $('<div id="visible" bind-visible="shouldBeVisible"></div>');
+    this.$hidden = $('<div id="hidden" bind-hidden="shouldBeHidden"></div>');
+
+    this.$enabled = $('<input id="enabled" type="text" bind-enabled="shouldBeEnabled" />');
+    this.$disabled = $('<input id="disabled" type="text" bind-disabled="shouldBeDisabled" />');
+
+    this.$if = $('<div id="if" bind-if="shouldBeTrue"><div>True</div></div>');
+    this.$unless = $('<div id="unless" bind-unless="shouldBeFalse"><div>False</div></div>');
+
+    this.$checked = $('<input id="checked" type="checkbox" bind-checked="checked" />');
+
+    this.$array = $('<div id="array"><div bind-array="array"></div></div>');
+    this.$attr = $('<div id="attr" bind-attr-data-attr="attr"></div>');
+
+    this.$each = $('<div id="each" bind-each="each"><div class="each-item" bind-text="id" bind-attr-data-id="id"></div></div>');
+    this.$select = $('<select id="select" bind-each="select" bind-val="selected_id"><option bind-val="id" bind-text="text"></option></select>');
+
+    $.each([
+      'input',
+      'textarea',
+      'contenteditable',
+      'text',
+      'html',
+      'uppercase',
+      'visible',
+      'hidden',
+      'enabled',
+      'disabled',
+      'if',
+      'unless',
+      'checked',
+      'array',
+      'attr',
+      'each',
+      'select'
+    ], function(i, name) {
+      $fixture.append(this['$' + name]);
+    }.bind(this));
 
     this.model = new Woodhouse.Model({
       text: 'Sterling Archer',
@@ -44,37 +91,8 @@ module('Bindings', {
       el: this.view.el,
       model: this.model
     }) || [];
-
-
-    // Elements
-    this.$el = this.view.$el;
-    this.$input = this.view.$el.find('#input');
-    this.$textarea = this.view.$el.find('#textarea');
-    this.$contenteditable = this.view.$el.find('#contenteditable');
-    this.$text = this.view.$el.find('#text');
-    this.$html = this.view.$el.find('#html');
-    this.$uppercase = this.view.$el.find('#uppercase');
-
-    this.$visible = this.view.$el.find('#visible');
-    this.$hidden = this.view.$el.find('#hidden');
-
-    this.$enabled = this.view.$el.find('#enabled');
-    this.$disabled = this.view.$el.find('#disabled');
-
-    this.$if = this.view.$el.find('#if');
-    this.$unless = this.view.$el.find('#unless');
-
-    this.$checked = this.view.$el.find('#checked');
-
-    this.$array = this.view.$el.find('#array');
-    this.$attr = this.view.$el.find('#attr');
-
-    this.$each = this.view.$el.find('#each');
-    this.$select = this.view.$el.find('#select');
   },
-  teardown: function() {
-
-  }
+  teardown: function() {}
 });
 
 
@@ -105,9 +123,9 @@ test('bind-text', function() {
   deepEqual(this.$text.text(), 'Malory Archer');
 
   // view-to-model
-  this.$input.val('Malory Archer');
+  this.$input.val('Woodhouse');
   this.$input.trigger('input');
-  deepEqual(this.$text.text(), 'Malory Archer');
+  equal(this.model.get('text'), 'Woodhouse');
 });
 
 

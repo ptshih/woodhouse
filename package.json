@@ -4,7 +4,7 @@
   "description": "Woodhouse, fetch me a rug!",
   "main": "woodhouse.js",
   "scripts": {
-    "test": "mocha -R spec test"
+    "test": "karma start"
   },
   "homepage": "https://github.com/ptshih/woodhouse",
   "repository": {
@@ -28,6 +28,8 @@
   "readmeFilename": "README.md",
   "devDependencies": {
     "karma": "^0.12.16",
+    "karma-cli": "0.0.4",
+    "karma-phantomjs-launcher": "^0.1.4",
     "karma-qunit": "^0.1.3"
   }
 }
