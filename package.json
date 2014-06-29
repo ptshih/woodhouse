@@ -23,9 +23,14 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-karma": "^0.8.3",
     "karma": "^0.12.16",
     "karma-cli": "0.0.4",
     "karma-phantomjs-launcher": "^0.1.4",
-    "karma-qunit": "^0.1.3"
+    "karma-qunit": "^0.1.3",
+    "load-grunt-tasks": "^0.6.0"
   }
 }
