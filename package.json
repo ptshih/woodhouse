@@ -4,7 +4,8 @@
   "description": "Woodhouse, fetch me a rug!",
   "main": "woodhouse.js",
   "scripts": {
-    "test": "mocha -R spec test"
+    "test": "karma start --single-run",
+    "watch-test": "karma start"
   },
   "homepage": "https://github.com/ptshih/woodhouse",
   "repository": {
@@ -15,11 +16,6 @@
     "woodhouse",
     "backbone"
   ],
-  "dependencies": {
-    "backbone": ">=1.1.2",
-    "underscore": ">=1.6.0",
-    "jquery": ">=1.11.0"
-  },
   "author": {
     "name": "Peter Shih",
     "web": "https://github.com/ptshih"
@@ -28,6 +24,8 @@
   "readmeFilename": "README.md",
   "devDependencies": {
     "karma": "^0.12.16",
+    "karma-cli": "0.0.4",
+    "karma-phantomjs-launcher": "^0.1.4",
     "karma-qunit": "^0.1.3"
   }
 }

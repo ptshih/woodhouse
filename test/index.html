@@ -15,60 +15,13 @@
   <div id="qunit"></div>
 
   <div id="qunit-fixture">
-    <!-- Input -->
-    <input id="input" bind-val="text">
-    <textarea id="textarea" bind-val="html"></textarea>
-    <div id="contenteditable" contenteditable="true" bind-text="text"></div>
-
-    <!-- Output -->
-    <div id="text" bind-text="text"></div>
-    <div id="html" bind-text="html"></div>
-    <div id="uppercase" bind-text="uppercase"></div>
-
-    <!-- Hidden / Visible -->
-    <div id="visible" bind-visible="shouldBeVisible"></div>
-    <div id="hidden" bind-hidden="shouldBeHidden"></div>
-
-
-    <input id="enabled" type="text" bind-enabled="shouldBeEnabled">
-    <input id="disabled" type="text" bind-disabled="shouldBeDisabled">
-
-    <input id="checked" type="checkbox" bind-checked="checked">
-
-    <!-- If / Unless -->
-    <div id="if" bind-if="shouldBeTrue">
-      <div>True</div>
-    </div>
-
-    <div id="unless" bind-unless="shouldBeFalse">
-      <div>False</div>
-    </div>
-
-    <!-- Array -->
-    <div id="array">
-      <div bind-array="array"></div>
-    </div>
-
-
-    <!-- Attr -->
-    <div id="attr" bind-attr-data-attr="attr"></div>
-
-    <!-- Each -->
-    <div id="each" bind-each="each">
-      <div class="each-item" bind-text="id" bind-attr-data-id="id"></div>
-    </div>
-
-    <select id="select" bind-each="select" bind-val="selected_id">
-      <option bind-val="id" bind-text="text"></option>
-    </select>
-
   </div>
 
   <!-- Tests -->
-  <script src="models.js"></script>
-  <script src="relations.js"></script>
-  <script src="events.js"></script>
-  <script src="misc.js"></script>
-  <script src="bindings.js"></script>
+  <script src="models.spec.js"></script>
+  <script src="relations.spec.js"></script>
+  <script src="events.spec.js"></script>
+  <script src="misc.spec.js"></script>
+  <script src="bindings.spec.js"></script>
 </body>
 </html>
