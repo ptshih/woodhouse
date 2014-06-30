@@ -36,8 +36,6 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt
-
   // Default task(s).
   grunt.registerTask('default', ['ci']);
 
