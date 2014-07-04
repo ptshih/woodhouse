@@ -136,7 +136,7 @@
       }
 
       // add extensions container
-      // not setting "current" initially (to "target.value") allows 
+      // not setting "current" initially (to "target.value") allows
       // drag & drop operations (from outside the control) to send change notifications
       target.valueExtensions = {
         current: null
@@ -374,9 +374,9 @@
 
   // Woodhouse.Model
   // ---
-  // Extends Backbone.DeepModel and adds support for: 
+  // Extends Backbone.DeepModel and adds support for:
   // Backbone.Model.oldset = Backbone.Model.prototype.set;
-  // 
+  //
   // - relations
   // - computed properties
   Woodhouse.Model = Backbone.Model.extend({
@@ -896,12 +896,12 @@
 
   // Woodhouse.Region
   // ---
-  // 
+  //
   // This is like a UIViewController
   // It has a property `view` that is shown in the DOM at location of the property `el`
   // If the region is closed via the `close` method, the `view` will be removed by calling it's `remove` method
   // If a region shows a view and an existing different view is currently being shown, it will be closed
-  // 
+  //
   // Instance Options/Attributes
   // Prototype Properties and Methods
   // onBeforeShow
@@ -1026,14 +1026,14 @@
 
   // Woodhouse.View
   // ---
-  // 
+  //
   // Properties
   // subviews - Array of Woodhouse.View
   // superview - Woodhouse.View
-  // 
+  //
   // Options (arguments passed in to constructor are added to the property `options` object)
   // locals - Object or Function - Properties that get mixed into the template context during template evaluation
-  // 
+  //
   // Prototype
   // template - Function - required - compiled template function (handlebars, etc...)
   // onBeforeRender - Function - optional
@@ -1130,7 +1130,7 @@
 
     // Templating
     // ---
-    // 
+    //
     // Evaluates a compiled template with context
     // TODO allow string templates to be evaluated on-the-fly
     evaluateTemplate: function(template) {
@@ -1158,18 +1158,18 @@
 
     // View Bindings
     // ---
-    // 
+    //
     // Add bindings declared with the `bind-*` attribute
     // `this` should always refer to the `view`
-    // 
+    //
     // TODO
     // - `bind-focus`
     // - `bind-css`
-    // 
+    //
     // - binding to nested keypaths that don't exist will NOT create them like a set will
     // - example: `bind-val="payment_source.card"` but payment_source does not have the key `card`
     // - pass back options in transformers
-    // 
+    //
     // Options:
     // - `el` is the root DOM element to bind to
     // - `model` is the Model or Collection to bind to
@@ -1524,6 +1524,7 @@
               var newChildBindings = this.addBindings({
                 el: $childEl,
                 model: collection.at(i),
+                parent: options.model,
                 index: i,
                 keypathPrefix: keypathPrefix
               });
@@ -1569,6 +1570,7 @@
             var newChildBindings = this.addBindings({
               el: $childEl,
               model: model,
+              parent: options.model,
               index: index,
               keypathPrefix: keypathPrefix
             });
@@ -1656,9 +1658,16 @@
           var viewEvents = 'input';
           var offset = 0;
 
+          // Added support for `../` to reference a parent!
+          var model = options.model;
+          if (/..\//.test(keypath)) {
+            model = options.parent;
+            keypath = keypath.replace('../', '');
+          }
+
           // Context
           var context = this.getContext({
-            model: options.model,
+            model: model,
             view: $bindEl.attr('bind-text-context') || $bindEl.attr('bind-html-context')
           });
 
@@ -2184,7 +2193,7 @@
 
     // View Handling
     // ---
-    // 
+    //
     // Forward all subview events to super view
     // Inspired by Marionette
     forwardChildViewEvents: function(view) {
@@ -2510,7 +2519,7 @@
 
   // Collection View
   // ---
-  // 
+  //
   // Mostly inspired by Marionette
   Woodhouse.CollectionView = Woodhouse.View.extend({
     render: function() {
