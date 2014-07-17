@@ -44,7 +44,7 @@
   var Woodhouse = {};
 
   // Version string
-  Woodhouse.VERSION = '0.2.14';
+  Woodhouse.VERSION = '0.2.18';
 
   // Debug flag
   Woodhouse.DEBUG = false;
@@ -1509,7 +1509,6 @@
             this.removeBindings(childBindings);
 
             // Clear parent container
-            var previousVal = isSelect ? $bindEl.val() : null;
             $childEls.remove();
             $childEls = $();
 
@@ -1543,9 +1542,12 @@
               $childEls.appendTo($bindEl);
             }
 
-            // Restore previous select val
             if (isSelect) {
-              $bindEl.val(previousVal);
+              // Firefox does not allow setting `$bindEl.val(value)`
+              // If the select does not have an option with the corresponding value
+              // Earlier we stored the intended selected value inside jQuery.data
+              // Here we read it back out and set it now that all the options are present
+              $bindEl.val($.data($bindEl[0], 'selected-value'));
             }
 
             // Add child bindings for removal later
@@ -1779,6 +1781,13 @@
             var transformersFn = this.transformers && this.transformers.modelToView;
             if (transformersFn && _.isFunction(transformersFn[keypathWithPrefix])) {
               value = transformersFn[keypathWithPrefix].call(this, value, model);
+            }
+
+            if (isSelect) {
+              // Firefox does not allow setting `$bindEl.val(value)`
+              // If the select does not have an option with the corresponding value
+              // So I store the intended value into jQuery.data and read it out later
+              $.data($bindEl[0], 'selected-value', value);
             }
 
             if ($bindEl.val() !== value) {

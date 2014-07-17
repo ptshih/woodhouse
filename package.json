@@ -1,6 +1,6 @@
 {
   "name": "woodhouse",
-  "version": "0.2.17",
+  "version": "0.2.18",
   "description": "Woodhouse, fetch me a rug!",
   "main": "woodhouse.js",
   "scripts": {
